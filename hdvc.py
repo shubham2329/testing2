@@ -37,7 +37,7 @@ class Meetingsuccessfully(unittest.TestCase):
         lists = self.driver.find_elements_by_xpath(data["meeting successfully scheduled"])
         self.assertEqual(0, len(lists))
         print('login pass')
-        file.write("test_alogin = pass")
+        file.write("test_alogin = Pass")
     def test_cmonthly(self):
         self.setUpClass()
         self.test_alogin()
@@ -50,7 +50,7 @@ class Meetingsuccessfully(unittest.TestCase):
         lists = self.driver.find_elements_by_xpath(data["meeting successfully scheduled"])
         self.assertEqual(0, len(lists))
         print('monthly pass')
-        file.write(" \n test_cmonthly = pass")
+        file.write(" \n test_cmonthly = Pass")
     def test_cweekly(self):
         self.setUpClass()
         self.test_alogin()
@@ -64,7 +64,7 @@ class Meetingsuccessfully(unittest.TestCase):
         lists = self.driver.find_elements_by_xpath(data["meeting successfully scheduled"])
         self.assertEqual(0, len(lists))
         print('weekly pass')
-        file.write("\n test_cweekly = pass")
+        file.write("\n test_cweekly = Pass")
     def test_dview(self):
         self.setUpClass()
         self.test_alogin()
@@ -75,7 +75,7 @@ class Meetingsuccessfully(unittest.TestCase):
         lists = self.driver.find_elements_by_xpath(data["meeting successfully scheduled"])
         self.assertEqual(0, len(lists))
         print('view pass')
-        file.write("\n test_dview = pass")
+        file.write("\n test_dview = Pass")
     def test_eview(self):
         self.setUpClass()
         self.test_alogin()
@@ -86,7 +86,7 @@ class Meetingsuccessfully(unittest.TestCase):
         lists = self.driver.find_elements_by_xpath(data["meeting successfully scheduled"])
         self.assertEqual(0, len(lists))
         print('Grid pass')
-        file.write("\n test_eview = pass")
+        file.write("\n test_eview = Pass")
     def test_fon(self):
         self.test_dview()
         self.driver.find_element_by_xpath(data["audiooff"]).click()#on
@@ -94,7 +94,7 @@ class Meetingsuccessfully(unittest.TestCase):
         lists = self.driver.find_elements_by_xpath(data["meeting successfully scheduled"])
         self.assertEqual(0, len(lists))
         print('on pass')
-        file.write("\n test_fon = pass")
+        file.write("\n test_fon = Pass")
     def test_gon(self):
         self.test_dview()
         self.driver.find_element_by_xpath(data["videooff"]).click()#on
@@ -102,13 +102,13 @@ class Meetingsuccessfully(unittest.TestCase):
         lists = self.driver.find_elements_by_xpath(data["meeting successfully scheduled"])
         self.assertEqual(0, len(lists))
         print('off pass')
-        file.write("\n test_gon = pass")
+        file.write("\n test_gon = Pass")
     def test_second_Meetingsuccessfully(self):
         print("verify title....")
         lists = self.driver.find_elements_by_xpath(data["meeting successfully scheduled"])
         self.assertEqual(0, len(lists))
         print('pass')
-        file.write("\n test_second_Meetingsuccessfully = pass")
+        file.write("\n test_second_Meetingsuccessfully = Pass")
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
