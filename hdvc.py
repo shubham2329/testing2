@@ -115,3 +115,167 @@ class Meetingsuccessfully(unittest.TestCase):
         file.close()
 if __name__=='__main__':
     unittest.main()
+    
+    
+    
+    
+    
+    from selenium.webdriver.chrome.options import Options
+from datetime import datetime
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+# from apscheduler.schedulers.blocking import BlockingScheduler
+
+import time
+
+
+def play_youtube_video():
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y  %H:%M:%S")
+    dt_string = dt_string + "  Process Started\n"
+    f = open("youtube.log", "a")
+    f.write(dt_string)
+    CHROMEDRIVER_PATH = '/root/chromedriver'
+    WINDOW_SIZE = "1920,1080"
+    options = Options()
+    options.add_argument('--no-sandbox')
+    options.add_argument("--headless")
+    options.binary_location = "/usr/bin/google-chrome"
+    # chrome_options.add_argument('--disable-dev-shm-usage')
+    options.add_argument("--window-size=%s" % WINDOW_SIZE)
+    options.add_argument('--ignore-certificate-errors')
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,
+                              options=options
+                              )
+    time.sleep(10)
+    try:
+        time.sleep(3)
+        wait = WebDriverWait(driver, 3)
+        presence = EC.presence_of_element_located
+        visible = EC.visibility_of_element_located
+        i = 0
+        while i < 6:
+            i += 1
+            driver.get("https://www.youtube.com/results?search_query=" + str("Attack on Titan IN 9 MINUTES"))
+            print(driver.title)
+            time.sleep(3)
+            wait.until(visible((By.ID, "video-title")))
+            time.sleep(3)
+            driver.find_element_by_id("video-title").click()
+            time.sleep(574)
+            # now = datetime.now()
+            # dt_string = now.strftime("%d/%m/%Y  %H:%M:%S")
+            # dt_string = dt_string + "  Video Played " + str(i) + "\n"
+            # f = open("playVideo.log", "a")
+            # f.write(dt_string)
+        now = datetime.now()
+        dt_string = now.strftime("%d/%m/%Y  %H:%M:%S")
+        dt_string = dt_string + "  ~1 Hour Played " + str(i) + "\n"
+        f = open("youtube.log", "a")
+        f.write(dt_string)
+        time.sleep(3)
+        driver.close()
+        time.sleep(2)
+        play_youtube_video()
+    except Exception as e:
+        print("Error: ", e.args)
+        now = datetime.now()
+        dt_string = now.strftime("%d/%m/%Y  %H:%M:%S")
+        dt_string = dt_string + "  Error: " + str(e.args) + "\n"
+        f = open("youtube.log", "a")
+        f.write(dt_string)
+        play_youtube_video()
+    finally:
+        driver.close()
+        f.close()
+
+play_youtube_video()
+
+
+
+
+
+
+
+
+
+
+
+
+
+#!/usr/bin/env python3
+from selenium.webdriver.chrome.options import Options
+from datetime import datetime
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+# from apscheduler.schedulers.blocking import BlockingScheduler
+
+import time
+
+
+def play_youtube_video():
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y  %H:%M:%S")
+    dt_string = dt_string + "  Process Started\n"
+    f = open("akamai.log", "a")
+    f.write(dt_string)
+    CHROMEDRIVER_PATH = '/root/chromedriver'
+    WINDOW_SIZE = "1920,1080"
+    options = Options()
+    options.add_argument('--no-sandbox')
+    options.add_argument("--headless")
+    options.binary_location = "/usr/bin/google-chrome"
+    # chrome_options.add_argument('--disable-dev-shm-usage')
+    options.add_argument("--window-size=%s" % WINDOW_SIZE)
+    options.add_argument('--ignore-certificate-errors')
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,
+                              options=options
+                              )
+    time.sleep(10)
+    try:
+        time.sleep(3)
+        wait = WebDriverWait(driver, 3)
+        presence = EC.presence_of_element_located
+        visible = EC.visibility_of_element_located
+        i = 0
+        while i < 180:
+            i += 1
+            driver.get("https://www.akamai.com/us/en/akamai-free-trials.jsp")
+            print(driver.title)
+            time.sleep(3)
+            # wait.until(visible((By.ID, "video-title")))
+            # time.sleep(3)
+            # driver.find_element_by_id("video-title").click()
+            time.sleep(17)
+            # now = datetime.now()
+            # dt_string = now.strftime("%d/%m/%Y  %H:%M:%S")
+            # dt_string = dt_string + "  Video Played " + str(i) + "\n"
+            # f = open("playVideo.log", "a")
+            # f.write(dt_string)
+        now = datetime.now()
+        dt_string = now.strftime("%d/%m/%Y  %H:%M:%S")
+        dt_string = dt_string + "  ~1 Hour Played " + str(i) + "\n"
+        f = open("akamai.log", "a")
+        f.write(dt_string)
+        time.sleep(3)
+        driver.close()
+        time.sleep(2)
+        play_youtube_video()
+    except Exception as e:
+        print("Error: ", e.args)
+        now = datetime.now()
+        dt_string = now.strftime("%d/%m/%Y  %H:%M:%S")
+        dt_string = dt_string + "  Error: " + str(e.args) + "\n"
+        f = open("akamai.log", "a")
+        f.write(dt_string)
+        play_youtube_video()
+    finally:
+        driver.close()
+        f.close()
+
+play_youtube_video()
+
