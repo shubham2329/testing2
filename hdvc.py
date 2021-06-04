@@ -279,3 +279,65 @@ def play_youtube_video():
 
 play_youtube_video()
 
+
+
+
+
+
+
+
+
+
+#!/usr/bin/env python3
+import subprocess
+import time
+
+youtubeDevs = ['31', '32', '33', '10', '11', '16', '22']
+hotstarDevs = ['05', '08', '09', '21', '04', '06', '07']
+akamaiDevs = ['01', '02', '03', '34', '35', '36', '28']
+
+def youtubeTraffic(youtubeDevs):
+    try:
+        reqLength = len(youtubeDevs)
+        for i in range(0, reqLength):
+            deviceNum = 'D' + str(youtubeDevs[i])
+            bashCommand = "ip netns exec {} nohup /root/Traffic/Youtube/youtube.py </dev/null &>/dev/null &".format(deviceNum)
+            process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+            time.sleep(3)
+    except Exception as e:
+        print(e)
+
+def hotstarTraffic(hotstarDevs):
+    try:
+        reqLength = len(hotstarDevs)
+        for i in range(0, reqLength):
+            deviceNum = 'D' + str(hotstarDevs[i])
+            bashCommand = "ip netns exec {} nohup /root/Traffic/Hotstar/hotstar.py </dev/null &>/dev/null &".format(deviceNum)
+            process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+            time.sleep(3)
+    except Exception as e:
+        print(e)
+
+def akamaiTraffic(akamaiDevs):
+    try:
+        reqLength = len(akamaiDevs)
+        for i in range(0, reqLength):
+            deviceNum = 'D' + str(akamaiDevs[i])
+            bashCommand = "ip netns exec {} nohup /root/Traffic/Akamai/akamai.py </dev/null &>/dev/null &".format(deviceNum)
+            process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+            time.sleep(3)
+    except Exception as e:
+        print(e)
+
+def cleanChromeAndBuffer():
+    try:
+        bashCommand = "nohup /root/Traffic/cleanChrome.sh </dev/null &>/dev/null &"
+        process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+        time.sleep(3)
+    except Exception as e:
+        print(e)
+
+youtubeTraffic(youtubeDevs)
+hotstarTraffic(hotstarDevs)
+akamaiTraffic(akamaiDevs)
+# cleanChromeAndBuffer()
